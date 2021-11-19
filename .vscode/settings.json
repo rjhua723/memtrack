@@ -1,5 +1,8 @@
 {
     "gcovViewer.buildDirectories": [
         "c:\\Users\\russh\\Documents\\storeAll\\store\\school_cs\\test_stuff\\test_c\\build"
-    ]
+    ],
+    "files.associations": {
+        "iostream": "cpp"
+    }
 }
