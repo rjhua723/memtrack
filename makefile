@@ -1,5 +1,5 @@
 CXX = clang++
-CXXFLAGS = -g -Wall -Wextra -pedantic -fno-omit-frame-pointer -target x86_64-pc-windows-gnu -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined
+CXXFLAGS = -g -Wall -Wextra -pedantic -fno-omit-frame-pointer -target x86_64-pc-windows-gnu -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined -std=c++2b
 .PHONY: all run mingw clean rebuild
 src = .
 addFolder = 
@@ -10,7 +10,7 @@ all: build/$(exe)
 run: build/$(exe)
 	./build/$(exe)
 mingw: CXX = g++
-mingw: CXXFLAGS = -g -pedantic -Wall -Wextra -std=c++2a --coverage
+mingw: CXXFLAGS = -g -pedantic -Wall -Wextra -std=c++2b --coverage
 mingw: all
 clean: cleanlinux
 rebuild: cleanlinux mingw

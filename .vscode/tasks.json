@@ -14,7 +14,10 @@
                     "${workspaceFolder}"
                 ]
             },
-            "group": "build"
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "build makefile mingw",
@@ -27,10 +30,7 @@
                     "${workspaceFolder}"
                 ]
             },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "group": "build"
         }
     ]
 }
