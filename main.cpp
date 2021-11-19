@@ -10,6 +10,7 @@ int main() {
     }
     delete[] arr;
 }
+// test
 void test(int current, int* walker) {
     if (current > 0) {
         *walker = current;
