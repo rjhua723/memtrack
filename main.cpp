@@ -11,6 +11,7 @@ int main() {
     delete[] arr;
 }
 // test
+// test2
 void test(int current, int* walker) {
     if (current > 0) {
         *walker = current;
