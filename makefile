@@ -12,7 +12,6 @@ run: build/$(buildFolder)/$(exe)
 	./build/$(buildFolder)/$(exe)
 mingw: CXX = g++
 mingw: CXXFLAGS = -g -pedantic -Wall -Wextra -std=c++2b --coverage
-mingw: buildFolder = gcc
 mingw: all
 clean: cleanlinux
 rebuild: cleanlinux mingw

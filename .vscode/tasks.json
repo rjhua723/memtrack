@@ -22,7 +22,7 @@
         {
             "label": "build makefile mingw",
             "type": "shell",
-            "command": "make mingw",
+            "command": "make mingw buildFolder=gcc",
             "problemMatcher": {
                 "base": "$gcc",
                 "fileLocation": [
