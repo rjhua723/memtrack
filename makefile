@@ -1,3 +1,4 @@
+buildFolder = clang
 CXX = clang++
 CXXFLAGS = -g -Wall -Wextra -pedantic -fno-omit-frame-pointer -target x86_64-pc-windows-gnu -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined -std=c++2b
 .PHONY: all run mingw clean rebuild
@@ -6,20 +7,21 @@ addFolder =
 cppName = main
 exe = main.exe
 
-all: build/$(exe)
-run: build/$(exe)
-	./build/$(exe)
+all: build/$(buildFolder)/$(exe)
+run: build/$(buildFolder)/$(exe)
+	./build/$(buildFolder)/$(exe)
 mingw: CXX = g++
 mingw: CXXFLAGS = -g -pedantic -Wall -Wextra -std=c++2b --coverage
-mingw: all
+mingw: buildFolder = gcc
+mingw: build/$(buildFolder)/$(exe)
 clean: cleanlinux
 rebuild: cleanlinux mingw
-build/$(exe): build/$(cppName).o
+build/$(buildFolder)/$(exe): build/$(buildFolder)/$(cppName).o
 	$(CXX) $(CXXFLAGS) $< -o $@
-build/$(cppName).o: $(src)/$(cppName).cpp
+build/$(buildFolder)/$(cppName).o: $(src)/$(cppName).cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
-rebuildwindows: cleanwindows build/$(exe)
+rebuildwindows: cleanwindows build/$(buildFolder)/$(exe)
 cleanwindows:
 	del build\*.o build\*.exe  build\*.ilk build\*.pdb build\*.lib build\*.exp build\*.gcda build\*.gcno 
 cleanlinux:
-	rm -f ./build/*.o ./build/*.exe ./build/*.ilk ./build/*.pdb ./build/*.lib ./build/*.exp build/*.gcda build/*.gcno 
+	rm -rf ./build/clang/* ./build/gcc/*
