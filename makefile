@@ -1,6 +1,6 @@
-buildFolder = clang
 CXX = clang++
 CXXFLAGS = -g -Wall -Wextra -pedantic -fno-omit-frame-pointer -target x86_64-pc-windows-gnu -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined -std=c++2b
+buildFolder = clang
 .PHONY: all run mingw clean rebuild
 src = .
 addFolder = 
@@ -13,7 +13,7 @@ run: build/$(buildFolder)/$(exe)
 mingw: CXX = g++
 mingw: CXXFLAGS = -g -pedantic -Wall -Wextra -std=c++2b --coverage
 mingw: buildFolder = gcc
-mingw: build/$(buildFolder)/$(exe)
+mingw: all
 clean: cleanlinux
 rebuild: cleanlinux mingw
 build/$(buildFolder)/$(exe): build/$(buildFolder)/$(cppName).o
