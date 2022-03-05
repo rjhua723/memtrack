@@ -1,5 +1,6 @@
 CXX = clang++
-CXXFLAGS = -g -Wall -Wextra -pedantic -fno-omit-frame-pointer -target x86_64-pc-windows-gnu -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined -std=c++2b
+CXXFLAGS = -g -Wall -Wextra -pedantic -fno-omit-frame-pointer -target x86_64-pc-windows-gnu -fno-omit-frame-pointer -fsanitize=undefined -std=c++2b
+# -fsanitize=address 
 c = clang
 .PHONY: all run mingw clean rebuild
 src =
@@ -19,7 +20,7 @@ build/$(c)/$(exe): build/$(c)/$(cppName).o build/$(c)/test.o
 	$(CXX) $(CXXFLAGS) $^ -o $@
 build/$(c)/test.o: $(addFolder)/test.cpp $(addFolder)/test.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
-build/$(c)/$(cppName).o: $(cppName).cpp
+build/$(c)/$(cppName).o: $(cppName).cpp $(addFolder)/test.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 rebuildwindows: cleanwindows build/$(c)/$(exe)
 cleanwindows:
