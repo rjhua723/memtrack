@@ -1,5 +1,5 @@
-#ifndef SRC_TEST_H_
-#define SRC_TEST_H_
+#ifndef SRC_MEMTRACK_MEMTRACK_H_
+#define SRC_MEMTRACK_MEMTRACK_H_
 #include <cstdlib>
 #include <iostream>
 
@@ -61,4 +61,4 @@ void operator delete[](void* memory, size_t size) {
     s_AllocationMetrics.TotalFreed += size;
     free(memory);
 }
-#endif  // SRC_TEST_H_
+#endif  // SRC_MEMTRACK_MEMTRACK_H_
