@@ -26,10 +26,11 @@ void* operator new(size_t size) {
 /**
  * @brief this is an overloaded new[] that tracks the allocated size "behind"
  * the pointer
- * @note The void* is manipulated with static_cast to different types. For
- * example, to set the size "behind" the pointer, use a size_t* to set the size
- * allocated. To offset the pointer, use a char* and offset it by how much was
- * allocated "behind" the pointer.
+ * @note Idea from: https://stackoverflow.com/a/49793058: The void* is
+ * manipulated with static_cast to different types. For example, to set the size
+ * "behind" the pointer, use a size_t* to set the size allocated. To offset the
+ * pointer, use a char* and offset it by how much was allocated "behind" the
+ * pointer.
  * @param size The size to allocate. This will be kept track of
  * @return void* A memory address to allocated memory. At index [-1] the size in
  * bytes should be available.
