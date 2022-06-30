@@ -1,2 +1,7 @@
-build/
+# build files
+*.exe
+*.gcda
+*.o
+*.gcno
+
 *.cache
