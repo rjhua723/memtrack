@@ -19,7 +19,7 @@ void test() {
     }
 
     PrintMemoryUsage();
-    delete[] test;
+    // delete[] test;
     PrintMemoryUsage();
 
     std::vector<int> vTest = {1, 1, 7, 7, 8};

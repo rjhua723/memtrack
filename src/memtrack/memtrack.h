@@ -24,16 +24,19 @@ void* operator new(size_t size) {
     return malloc(size);
 }
 /**
- * @brief this is an overloaded new[] that tracks the allocated size "behind"
+ * @brief this is an overloaded new[] that saves the allocated size "behind"
  * the pointer
  * @note Idea from: https://stackoverflow.com/a/49793058: The void* is
- * manipulated with static_cast to different types. For example, to set the size
- * "behind" the pointer, use a size_t* to set the size allocated. To offset the
- * pointer, use a char* and offset it by how much was allocated "behind" the
- * pointer.
- * @param size The size to allocate. This will be kept track of
- * @return void* A memory address to allocated memory. At index [-1] the size in
- * bytes should be available.
+ * manipulated with static_cast to different types to allow moving the base
+ * address. For example, to save the size "behind" the pointer, use a size_t* to
+ * save the size allocated. To offset the pointer, use a char* and offset to the
+ * right by how much was allocated "behind" the pointer - basically offset it by
+ * the size of size_t. A char* is used because pointer arithmetic (offset to
+ * right) doesn't exist with a void*.
+ * @param size The size to allocate. This will be tracked in AllocationMetrics
+ * @return void* A memory address to allocated memory. At index [-1] of
+ * appropriate array type (same size as a char*) the size in bytes should be
+ * available.
  */
 void* operator new[](size_t size) {
     s_AllocationMetrics.TotalAllocated += size;
