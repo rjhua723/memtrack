@@ -1,7 +1,3 @@
 # build files
-*.exe
-*.gcda
-*.o
-*.gcno
-
-*.cache
+*build
+*cache

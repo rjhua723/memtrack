@@ -1,9 +1,6 @@
-#include <iostream>
-#include <string>
 #include <vector>
-
-#include "./src/memtrack/memtrack.h"
-using std::cout;
+#include "memtrack.h"
+// using std::cout;
 
 void test();
 int main() {
@@ -28,4 +25,5 @@ void test() {
         vTest.push_back(i);
         PrintMemoryUsage();
     }
+    PrintMemoryUsage();
 }

@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.10)
+project(memtrack_example VERSION 1)
+add_executable(memtrack_example main.cpp)
+target_link_libraries(memtrack_example memtrack)
+target_include_directories(memtrack_example PUBLIC src)
+add_subdirectory(src)
+add_compile_options(-Wall -Wextra)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
